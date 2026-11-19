@@ -3,8 +3,9 @@
 **RFC GGN-1 · Draft · Version 1.0.0-draft.1 · Author: juuerlrsr · License: [CC0 1.0](LICENSE)**
 
 GGN is a plain-text format for recording games of **Game of the Generals** (Salpakan), inspired by
-chess's [Portable Game Notation (PGN)](http://www.saremba.de/chessgml/standards/pgn/pgn-complete.htm).
-A record is a list of tags followed by the moves:
+two chess notations: [Portable Game Notation (PGN)](http://www.saremba.de/chessgml/standards/pgn/pgn-complete.htm),
+for the shape of a record, and [algebraic notation](https://en.wikipedia.org/wiki/Algebraic_notation_%28chess%29), for naming squares (`e4`). A record is a list of tags followed
+by the moves:
 
 ```
 [Event "Example"]

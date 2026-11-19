@@ -12,7 +12,7 @@
 
 ## Abstract
 
-GGN is a plain-text format for recording games of **Game of the Generals** (Salpakan). It is inspired by chess's [Portable Game Notation (PGN)](http://www.saremba.de/chessgml/standards/pgn/pgn-complete.htm): a record is a list of tags followed by the moves, easy for people to read and simple for programs to write.
+GGN is a plain-text format for recording games of **Game of the Generals** (Salpakan). It is inspired by two chess notations. From [Portable Game Notation (PGN)](http://www.saremba.de/chessgml/standards/pgn/pgn-complete.htm) it takes the shape of a record: a list of tags followed by the moves, easy for people to read and simple for programs to write. From [algebraic notation](https://en.wikipedia.org/wiki/Algebraic_notation_%28chess%29) it takes the names of squares: a file letter and a rank number, such as `e4`.
 
 The **core standard** (Part 1) describes the classic game. Other rule sets are **extensions** that a record declares with a `Variant` tag; Part 2 defines the extension for **0GG**. A reader that knows only the core can still replay any record, because setups and moves are always written the core way. Part 3 describes how 0GG uses the format, and Part 4 proposes how to record games played on a physical board.
 
@@ -101,7 +101,7 @@ Standard tags **MUST NOT** be used to record such details. A writer **MAY** note
 
 ### Board and sides
 
-- Squares **MUST** be named like chess: file letter from `a`, rank number from `1`. The classic board runs `a1` to `i8`.
+- Squares **MUST** be named as in chess's algebraic notation: file letter from `a`, rank number from `1`. The classic board runs `a1` to `i8`.
 - **South** plays from the low rows (its far row is the last row); **North** plays from the top rows. GGN names sides by position, not by piece colour, since sets differ in colour and either side may move first.
 
 The 0GG board, 5 × 6, with the armies from the example above (North at the top):
