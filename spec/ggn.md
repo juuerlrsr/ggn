@@ -5,7 +5,7 @@
 | Request for Comments | GGN-1 |
 | Category | Proposed standard |
 | Status | Draft |
-| Version | 1.0.0-draft.1 |
+| Version | 1.0.0-draft.2 |
 | Author | juuerlrsr |
 | Date | November 2026 |
 | License | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) (public domain) |
@@ -40,7 +40,7 @@ A record has a **tag section** (`[Key "value"]` lines), a blank line, and the **
 [South "Ana"]
 [North "Ben"]
 [Result "0-1"]
-[GGN "1.0.0-draft.1"]
+[GGN "1.0.0-draft.2"]
 [Variant "0GG"]
 [Board "5x6"]
 [FirstMover "South"]
@@ -129,7 +129,7 @@ The first seven are PGN's Seven Tag Roster. Tags marked "yes" under Required are
 | `Round` | yes | Round in an event, or `-` |
 | `South`, `North` | yes | Player names; `?` if unknown |
 | `Result` | yes | `1-0` South won, `0-1` North won, `1/2-1/2` draw, `*` no result (unfinished, aborted) |
-| `GGN` | yes | The version of this standard the record follows, e.g. `1.0.0-draft.1` |
+| `GGN` | yes | The version of this standard the record follows, e.g. `1.0.0-draft.2` |
 | `Variant` | no | The rule set, if not classic, e.g. `0GG`. **No `Variant` tag means classic** |
 | `Board` | no | `columns x rows`; default `9x8` |
 | `FirstMover` | yes | `South` or `North` |
@@ -232,7 +232,7 @@ No ranks or rules are needed. A `<` or `x` whose target square is empty, or a pl
 [South "A. Cruz"]
 [North "B. Santos"]
 [Result "1-0"]
-[GGN "1.0.0-draft.1"]
+[GGN "1.0.0-draft.2"]
 [FirstMover "South"]
 [Termination "flag_captured"]
 [Visibility "full"]
@@ -266,7 +266,7 @@ Writers **SHOULD** write them after the core tags, in this order.
 | Tag | Required | Value |
 | --- | --- | --- |
 | `Mode` | yes | How armies were made: `draft4` (Draft), `common4` (Open draft), `random4` (All random), `mirror6` (Mirror). Readers **SHOULD** also accept the earlier modes `draft3`, `common3`, `random3` and `mirror5` |
-| `Rules` | yes | Every rule toggle: `FlagAttacksPrivate`, `Promotion`, `ReplaceLostRanks`, `PromoteToSpy`, each `=on` or `=off`; then, for All random and Mirror games with fixed tiles, `FixedTiles=` and the ranks, comma-separated (for example `FixedTiles=SPY,PVT`), left out when there are none; `?` when unknown |
+| `Rules` | yes | Every rule toggle: `FlagAttacksPrivate`, `Promotion`, `ReplaceLostRanks`, `PromoteToSpy`, each `=on` or `=off`; then, for All random and Mirror games with fixed tiles, `FixedTiles=` and the ranks, comma-separated (for example `FixedTiles=SPY,PVT`), left out when there are none; then, for All random games, `Reveal=` and the number of tiles each player shows the opponent before any re-roll, `0` to `4` (for example `Reveal=3`); `?` when unknown |
 | `Timers` | no | Custom timers only: `mulligan= draft= pick= setup= idle= grace=` in seconds, or `off` |
 | `Pool` | open draft | The face-up pool, e.g. `COL SPY PVT …` |
 | `Picks` | open draft | Picks in order, side and rank: `N:SPY S:COL S:LTC …` (`S` South, `N` North) |
@@ -317,7 +317,7 @@ Each player keeps 4 of 6 dealt tiles, in secret, on top of a Flag, a Spy and a P
 [South "Ana"]
 [North "Ben"]
 [Result "0-1"]
-[GGN "1.0.0-draft.1"]
+[GGN "1.0.0-draft.2"]
 [Variant "0GG"]
 [Board "5x6"]
 [FirstMover "South"]
@@ -349,7 +349,7 @@ Both armies start with a Flag and 2 Privates, then take turns picking from a fac
 [South "Ana"]
 [North "Ben"]
 [Result "*"]
-[GGN "1.0.0-draft.1"]
+[GGN "1.0.0-draft.2"]
 [Variant "0GG"]
 [Board "5x6"]
 [FirstMover "South"]
@@ -370,7 +370,7 @@ Both armies start with a Flag and 2 Privates, then take turns picking from a fac
 
 ### Example: All random, with a re-roll
 
-Each army is a Flag plus 6 random tiles; each player sees one of the other's. South re-rolled, so South shows two. North moves first here.
+Each army is a Flag plus 6 random tiles. With `Reveal=3` (the default), each player sees 3 of the other's; South re-rolled, so South shows 4. North moves first here.
 
 ```
 [Event "Example"]
@@ -380,7 +380,7 @@ Each army is a Flag plus 6 random tiles; each player sees one of the other's. So
 [South "Ana"]
 [North "Ben"]
 [Result "*"]
-[GGN "1.0.0-draft.1"]
+[GGN "1.0.0-draft.2"]
 [Variant "0GG"]
 [Board "5x6"]
 [FirstMover "North"]
@@ -390,12 +390,12 @@ Each army is a Flag plus 6 random tiles; each player sees one of the other's. So
 [SouthSetup "a1:PVT c1:FLAG e1:PVT a2:CPT b2:COL c2:SPY d2:SGT"]
 [NorthSetup "b5:MAJ c5:2LT d5:SPY e5:1LT a6:PVT c6:FLAG e6:PVT"]
 [Mode "random4"]
-[Rules "FlagAttacksPrivate=on Promotion=off ReplaceLostRanks=on PromoteToSpy=on"]
+[Rules "FlagAttacksPrivate=on Promotion=off ReplaceLostRanks=on PromoteToSpy=on Reveal=3"]
 [SouthDeal "MAJ PVT PVT SGT 1LT PVT"]
 [SouthMulligan "PVT COL SPY SGT PVT CPT"]
 [NorthDeal "MAJ 2LT SPY PVT PVT 1LT"]
-[SouthShown "COL SGT"]
-[NorthShown "SPY"]
+[SouthShown "COL SGT PVT CPT"]
+[NorthShown "SPY MAJ PVT"]
 
 1. c5>c4 c2>c3 2. c4<c3 *
 ```
@@ -551,4 +551,5 @@ The `GGN` tag holds the version of this standard, following [Semantic Versioning
 
 ### Changelog
 
+- **1.0.0-draft.2**: All random games write their reveal count (`Reveal=` in `Rules`); the default is 3 tiles, up to 4.
 - **1.0.0-draft.1**: First draft of Request for Comments GGN-1.

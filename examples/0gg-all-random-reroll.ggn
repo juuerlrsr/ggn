@@ -5,7 +5,7 @@
 [South "Ana"]
 [North "Ben"]
 [Result "*"]
-[GGN "1.0.0-draft.1"]
+[GGN "1.0.0-draft.2"]
 [Variant "0GG"]
 [Board "5x6"]
 [FirstMover "North"]
@@ -15,11 +15,11 @@
 [SouthSetup "a1:PVT c1:FLAG e1:PVT a2:CPT b2:COL c2:SPY d2:SGT"]
 [NorthSetup "b5:MAJ c5:2LT d5:SPY e5:1LT a6:PVT c6:FLAG e6:PVT"]
 [Mode "random4"]
-[Rules "FlagAttacksPrivate=on Promotion=off ReplaceLostRanks=on PromoteToSpy=on"]
+[Rules "FlagAttacksPrivate=on Promotion=off ReplaceLostRanks=on PromoteToSpy=on Reveal=3"]
 [SouthDeal "MAJ PVT PVT SGT 1LT PVT"]
 [SouthMulligan "PVT COL SPY SGT PVT CPT"]
 [NorthDeal "MAJ 2LT SPY PVT PVT 1LT"]
-[SouthShown "COL SGT"]
-[NorthShown "SPY"]
+[SouthShown "COL SGT PVT CPT"]
+[NorthShown "SPY MAJ PVT"]
 
 1. c5>c4 c2>c3 2. c4<c3 *

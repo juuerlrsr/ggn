@@ -1,6 +1,6 @@
 # GGN: Generals Game Notation
 
-**RFC GGN-1 · Draft · Version 1.0.0-draft.1 · Author: juuerlrsr · License: [CC0 1.0](LICENSE)**
+**RFC GGN-1 · Draft · Version 1.0.0-draft.2 · Author: juuerlrsr · License: [CC0 1.0](LICENSE)**
 
 GGN is a plain-text format for recording games of **Game of the Generals** (Salpakan), inspired by
 two chess notations: [Portable Game Notation (PGN)](http://www.saremba.de/chessgml/standards/pgn/pgn-complete.htm),
@@ -15,7 +15,7 @@ by the moves:
 [South "Ana"]
 [North "Ben"]
 [Result "0-1"]
-[GGN "1.0.0-draft.1"]
+[GGN "1.0.0-draft.2"]
 [Variant "0GG"]
 [Board "5x6"]
 [FirstMover "South"]
@@ -40,7 +40,7 @@ exactly. GGN works for any board, side colours and piece design.
 
 ## Status
 
-This is a **draft**. It may change in any way between drafts (`1.0.0-draft.1`, `-draft.2`, …)
+This is a **draft**. It may change in any way between drafts (`1.0.0-draft.2`, `-draft.2`, …)
 until the first final version, `1.0.0`. After that, versions follow
 [Semantic Versioning](https://semver.org) and a published version never changes.
 

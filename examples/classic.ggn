@@ -5,7 +5,7 @@
 [South "A. Cruz"]
 [North "B. Santos"]
 [Result "1-0"]
-[GGN "1.0.0-draft.1"]
+[GGN "1.0.0-draft.2"]
 [FirstMover "South"]
 [Termination "flag_captured"]
 [Visibility "full"]
