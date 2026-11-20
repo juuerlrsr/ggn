@@ -5,7 +5,7 @@
 | Request for Comments | GGN-1 |
 | Category | Proposed standard |
 | Status | Draft |
-| Version | 1.0.0-draft.2 |
+| Version | 1.0.0-draft.3 |
 | Author | juuerlrsr |
 | Date | November 2026 |
 | License | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) (public domain) |
@@ -16,7 +16,7 @@ GGN is a plain-text format for recording games of **Game of the Generals** (Salp
 
 The **core standard** (Part 1) describes the classic game. Other rule sets are **extensions** that a record declares with a `Variant` tag; Part 2 defines the extension for **0GG**. A reader that knows only the core can still replay any record, because setups and moves are always written the core way. Part 3 describes how 0GG uses the format, and Part 4 proposes how to record games played on a physical board.
 
-GGN is **independent of how a game looks**: it works the same for any board (wooden, paper, printed or on screen), any colours for the two sides, and any design of pieces or tiles.
+GGN is **independent of how a game looks**: it works the same for any board (wooden, paper, printed or on screen), any colors for the two sides, and any design of pieces.
 
 ## Status of This Memo
 
@@ -40,7 +40,7 @@ A record has a **tag section** (`[Key "value"]` lines), a blank line, and the **
 [South "Ana"]
 [North "Ben"]
 [Result "0-1"]
-[GGN "1.0.0-draft.2"]
+[GGN "1.0.0-draft.3"]
 [Variant "0GG"]
 [Board "5x6"]
 [FirstMover "South"]
@@ -94,15 +94,15 @@ Records **MUST** use the codes above, including `G5` to `G1` for the generals. H
 A record holds only **squares**, **sides by position** (South and North) and **rank codes**. It says nothing about how the game looked, so the same record describes a game played on any set:
 
 - **Board:** any material, size or style: a wooden board, a printed sheet, a digital board.
-- **Colours:** either colour may play either side; the colours of the pieces, the squares or the two armies are not part of the record.
-- **Pieces and tiles:** any design: traditional insignia, icons, numbers or text, and any way of labelling them on screen (0GG, for example, labels the generals `5G` to `1G`).
+- **Colors:** either color may play either side; the colors of the pieces, the squares or the two armies are not part of the record.
+- **Pieces:** any design (traditional insignia, icons, numbers or text, wooden pieces or printed tiles), and any way of labeling them on screen (0GG, for example, labels the generals `5G` to `1G`).
 
 Standard tags **MUST NOT** be used to record such details. A writer **MAY** note them in a comment or in an extra tag of its own, which readers keep but need not understand.
 
 ### Board and sides
 
 - Squares **MUST** be named as in chess's algebraic notation: file letter from `a`, rank number from `1`. The classic board runs `a1` to `i8`.
-- **South** plays from the low rows (its far row is the last row); **North** plays from the top rows. GGN names sides by position, not by piece colour, since sets differ in colour and either side may move first.
+- **South** plays from the low rows (its far row is the last row); **North** plays from the top rows. GGN names sides by position, not by piece color, since sets differ in color and either side may move first.
 
 The 0GG board, 5 × 6, with the armies from the example above (North at the top):
 
@@ -129,7 +129,7 @@ The first seven are PGN's Seven Tag Roster. Tags marked "yes" under Required are
 | `Round` | yes | Round in an event, or `-` |
 | `South`, `North` | yes | Player names; `?` if unknown |
 | `Result` | yes | `1-0` South won, `0-1` North won, `1/2-1/2` draw, `*` no result (unfinished, aborted) |
-| `GGN` | yes | The version of this standard the record follows, e.g. `1.0.0-draft.2` |
+| `GGN` | yes | The version of this standard the record follows, e.g. `1.0.0-draft.3` |
 | `Variant` | no | The rule set, if not classic, e.g. `0GG`. **No `Variant` tag means classic** |
 | `Board` | no | `columns x rows`; default `9x8` |
 | `FirstMover` | yes | `South` or `North` |
@@ -232,7 +232,7 @@ No ranks or rules are needed. A `<` or `x` whose target square is empty, or a pl
 [South "A. Cruz"]
 [North "B. Santos"]
 [Result "1-0"]
-[GGN "1.0.0-draft.2"]
+[GGN "1.0.0-draft.3"]
 [FirstMover "South"]
 [Termination "flag_captured"]
 [Visibility "full"]
@@ -266,17 +266,17 @@ Writers **SHOULD** write them after the core tags, in this order.
 | Tag | Required | Value |
 | --- | --- | --- |
 | `Mode` | yes | How armies were made: `draft4` (Draft), `common4` (Open draft), `random4` (All random), `mirror6` (Mirror). Readers **SHOULD** also accept the earlier modes `draft3`, `common3`, `random3` and `mirror5` |
-| `Rules` | yes | Every rule toggle: `FlagAttacksPrivate`, `Promotion`, `ReplaceLostRanks`, `PromoteToSpy`, each `=on` or `=off`; then, for All random and Mirror games with fixed tiles, `FixedTiles=` and the ranks, comma-separated (for example `FixedTiles=SPY,PVT`), left out when there are none; then, for All random games, `Reveal=` and the number of tiles each player shows the opponent before any re-roll, `0` to `4` (for example `Reveal=3`); `?` when unknown |
-| `Timers` | no | Custom timers only: `mulligan= draft= pick= setup= idle= grace=` in seconds, or `off` |
+| `Rules` | yes | Every rule toggle: `FlagAttacksPrivate`, `Promotion`, `ReplaceLostRanks`, `PromoteToSpy`, each `=on` or `=off`; then, for All random and Mirror games with pieces every army is sure to get (the game's **Always include** setting), `FixedTiles=` and the ranks, comma-separated (for example `FixedTiles=SPY,PVT`), left out when there are none; then, for All random games, `Reveal=` and the number of pieces each player shows the opponent before any reroll, `0` to `4` (for example `Reveal=3`); `?` when unknown |
+| `Timers` | no | Custom timers only: `mulligan=` (the redraw or reroll step) `draft= pick= setup= idle= grace=`, in seconds, or `off` |
 | `Pool` | open draft | The face-up pool, e.g. `COL SPY PVT …` |
 | `Picks` | open draft | Picks in order, side and rank: `N:SPY S:COL S:LTC …` (`S` South, `N` North) |
 | `SouthDeal`, `NorthDeal` | draft, random, mirror | The first hand dealt |
-| `SouthMulligan`, `NorthMulligan` | draft, random | The new hand, only if that side redrew (a re-roll in random modes) |
-| `SouthKeep`, `NorthKeep` | draft | The tiles kept from the final hand |
-| `SouthShown`, `NorthShown` | random | The tiles each side showed the opponent (public) |
+| `SouthMulligan`, `NorthMulligan` | draft, random | The new hand, only if that side redrew (Draft) or rerolled (All random) |
+| `SouthKeep`, `NorthKeep` | draft | The pieces kept from the final hand |
+| `SouthShown`, `NorthShown` | random | The pieces each side showed the opponent (public) |
 | `MatchId`, `Room` | no | Server archive identifiers |
 
-A tag whose Required column names modes is used only in those modes, and is **REQUIRED** in them, with two exceptions: the `Mulligan` tags appear only when that side redrew, and a side's private tags (`Deal`, `Mulligan`, `Keep`) **MUST** appear only when `Visibility` shows that side. In mirrored modes both sides' `Deal` is the same set.
+A tag whose Required column names modes is used only in those modes, and is **REQUIRED** in them, with two exceptions: the `Mulligan` tags appear only when that side redrew or rerolled, and a side's private tags (`Deal`, `Mulligan`, `Keep`) **MUST** appear only when `Visibility` shows that side. In mirrored modes both sides' `Deal` is the same set.
 
 `TimeControl` **MUST** be written (`-` with no game clock). A game with no time limits at all is written with `TimeControl` `-` and every timer `off`:
 
@@ -307,7 +307,7 @@ The same ply in three records:
 
 ### Example: Draft
 
-Each player keeps 4 of 6 dealt tiles, in secret, on top of a Flag, a Spy and a Private.
+Each player keeps 4 of 6 dealt pieces, in secret, on top of a Flag, a Spy and a Private.
 
 ```
 [Event "Example"]
@@ -317,7 +317,7 @@ Each player keeps 4 of 6 dealt tiles, in secret, on top of a Flag, a Spy and a P
 [South "Ana"]
 [North "Ben"]
 [Result "0-1"]
-[GGN "1.0.0-draft.2"]
+[GGN "1.0.0-draft.3"]
 [Variant "0GG"]
 [Board "5x6"]
 [FirstMover "South"]
@@ -349,7 +349,7 @@ Both armies start with a Flag and 2 Privates, then take turns picking from a fac
 [South "Ana"]
 [North "Ben"]
 [Result "*"]
-[GGN "1.0.0-draft.2"]
+[GGN "1.0.0-draft.3"]
 [Variant "0GG"]
 [Board "5x6"]
 [FirstMover "South"]
@@ -368,9 +368,9 @@ Both armies start with a Flag and 2 Privates, then take turns picking from a fac
 
 (Unfinished: `*`.)
 
-### Example: All random, with a re-roll
+### Example: All random, with a reroll
 
-Each army is a Flag plus 6 random tiles. With `Reveal=3` (the default), each player sees 3 of the other's; South re-rolled, so South shows 4. North moves first here.
+Each army is a Flag plus 6 random pieces. With `Reveal=3` (the default), each player sees 3 of the other's; South rerolled, so South shows 4. North moves first here.
 
 ```
 [Event "Example"]
@@ -380,7 +380,7 @@ Each army is a Flag plus 6 random tiles. With `Reveal=3` (the default), each pla
 [South "Ana"]
 [North "Ben"]
 [Result "*"]
-[GGN "1.0.0-draft.2"]
+[GGN "1.0.0-draft.3"]
 [Variant "0GG"]
 [Board "5x6"]
 [FirstMover "North"]
@@ -451,7 +451,7 @@ The arbiter is the only one who can check the game against both armies, so the r
 Before play:
 
 - **Setups:** each army has exactly 21 pieces of the right ranks (one of each officer, 2 Spies, 6 Privates, the Flag), all in that side's three home rows, and the board matches the setup card square by square.
-- **Board:** the files and ranks are labelled from South's side, and both players agree which side is South.
+- **Board:** the files and ranks are labeled from South's side, and both players agree which side is South.
 - **Header:** the players, the first mover and the time control are written before the first move.
 
 During play:
@@ -547,9 +547,10 @@ The arbiter types the scoresheet and setup cards into a record: the tags from th
 
 ## Versioning
 
-The `GGN` tag holds the version of this standard, following [Semantic Versioning](https://semver.org). Drafts carry a pre-release tag (`1.0.0-draft.1`, `1.0.0-draft.2`, …); the final version will be `1.0.0`. A reader **MUST** refuse a record whose major version is newer than its own, ignoring any pre-release tag in that comparison.
+The `GGN` tag holds the version of this standard, following [Semantic Versioning](https://semver.org). Drafts carry a pre-release tag (`1.0.0-draft.1`, `1.0.0-draft.2`, `1.0.0-draft.3`, …); the final version will be `1.0.0`. A reader **MUST** refuse a record whose major version is newer than its own, ignoring any pre-release tag in that comparison.
 
 ### Changelog
 
-- **1.0.0-draft.2**: All random games write their reveal count (`Reveal=` in `Rules`); the default is 3 tiles, up to 4.
+- **1.0.0-draft.3**: Wording only; the format is unchanged. US English throughout (color, labeling); "pieces" for what was sometimes called tiles; "reroll"; the redraw and reroll step explained where the `Mulligan` tags and the `mulligan=` timer keep their names.
+- **1.0.0-draft.2**: All random games write their reveal count (`Reveal=` in `Rules`); the default is 3 pieces, up to 4.
 - **1.0.0-draft.1**: First draft of Request for Comments GGN-1.
