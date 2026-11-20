@@ -552,5 +552,5 @@ The `GGN` tag holds the version of this standard, following [Semantic Versioning
 ### Changelog
 
 - **1.0.0-draft.3**: Wording only; the format is unchanged. US English throughout (color, labeling); "pieces" for what was sometimes called tiles; "reroll"; the redraw and reroll step explained where the `Mulligan` tags and the `mulligan=` timer keep their names.
-- **1.0.0-draft.2**: All random games write their reveal count (`Reveal=` in `Rules`); the default is 3 pieces, up to 4.
+- **1.0.0-draft.2**: All random games record how many of each player's random pieces the opponent is shown: `Reveal=` in `Rules`, from `0` to `4` (the game's default is 3).
 - **1.0.0-draft.1**: First draft of Request for Comments GGN-1.
