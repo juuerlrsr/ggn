@@ -30,7 +30,7 @@ During play:
 
 - **Each move:** the piece belongs to the side to move and goes one square forward, back, left or right.
 - **Each challenge:** the outcome is resolved from the setup cards, not from memory, and announced as "won", "lost" or "both removed" without naming ranks.
-- **Promotion and the Flag:** under rules that have them, the arbiter checks the conditions (for example, no enemy piece beside a Flag on the far row) before announcing the result.
+- **Promotion and the Flag:** under rules that have them, the arbiter checks the conditions (for example, no enemy piece beside a Flag at the opposite end) before announcing the result.
 - **Position checks:** every 20 turns or so, the arbiter checks that the pieces on the board match the scoresheet, by counting each side's pieces and checking a few squares. A mistake found early is easy to put right.
 - **Corrections:** a mistake found during play is corrected on the sheet with a short note beside the move, and both players are told.
 

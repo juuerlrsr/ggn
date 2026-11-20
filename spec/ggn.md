@@ -137,7 +137,7 @@ The first seven are PGN's **Seven Tag Roster**, with `South` and `North` for `Wh
 | Value | The game ended because |
 | --- | --- |
 | `flag_captured` | a Flag was captured |
-| `flag_reached` | a Flag reached the far row and won under the rules in use |
+| `flag_reached` | a Flag reached the opposite end and won under the rules in use |
 | `resign` | a player resigned |
 | `timeout` | a player ran out of time |
 | `agreed` | the players agreed a draw |
