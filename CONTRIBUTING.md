@@ -20,7 +20,7 @@ Describe what changes and why, and whether existing records would still read the
 
 Requirement words (**MUST**, **SHOULD**, **MAY** …) follow [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119)
 and [RFC 8174](https://www.rfc-editor.org/rfc/rfc8174): use them only in capitals, only in the
-normative parts (Parts 1 and 2), and only for real requirements.
+normative sections, and only for real requirements.
 
 ## License of contributions
 

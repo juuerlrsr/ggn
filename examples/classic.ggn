@@ -5,13 +5,13 @@
 [South "A. Cruz"]
 [North "B. Santos"]
 [Result "1-0"]
-[GGN "1.0.0-draft.3"]
+[GGN "1.0.0-draft.4"]
 [FirstMover "South"]
 [Termination "flag_captured"]
 [Visibility "full"]
-[SouthSetup "a1:FLAG b1:PVT c1:PVT d1:SPY e2:G5 f2:G4 g2:G3 h3:G2 i3:G1"]
+[SouthSetup "a1:FLAG b1:PVT c1:PVT d1:SPY e2:5G f2:4G g2:3G h3:2G i3:1G"]
 [NorthSetup "a8:FLAG e7:COL f7:SPY g6:PVT h6:LTC"]
 
 1. e2>e3 g6>g5 2. e3>e4 h6>h5 3. e4>e5 g5>g4 4. e5>e6 f7>f6
-5. e6>e7 {beats the Colonel} f6>f5 6. e7>e8 h5>h4 7. e8>d8 g4>g3
-8. d8>c8 f5>f4 9. c8>b8 h4<h3 10. b8>a8# 1-0
+5. e6>e7 {beats the Colonel} f6>f5 6. e7>e8 h5>h4 7. e8>d8 g4>g3 8. d8>c8 f5>f4
+9. c8>b8 h4<h3 10. b8>a8# 1-0
